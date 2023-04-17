@@ -8,31 +8,27 @@ namespace MinefieldTests
 {
     public class MineCreationTests
     {
-        const int LowerMineCellValue = 0;
-        const int UpperMineCellValue = 65;
+        const int InclusiveLowerMineCellSeedValue = 0;
+        const int ExclusiveUpperMineCellSeedValue = 65;
         const int NoOfMinesForDifficltyEasy = 10;
         const int NoOfMinesForDifficltyMedium = 15;
         const int NoOfMinesForDifficltyDifficult = 20;
 
 
         [Theory]
-        [InlineData(LowerMineCellValue, UpperMineCellValue, NoOfMinesForDifficltyEasy)]
-        [InlineData(LowerMineCellValue, UpperMineCellValue, NoOfMinesForDifficltyMedium)]
-        [InlineData(LowerMineCellValue, UpperMineCellValue, NoOfMinesForDifficltyDifficult)]
-        public void GameboardIsCreated(int lowerMineCellValue, int upperMineCellValue, int integerCount)
+        [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyEasy)]
+        [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyMedium)]
+        [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyDifficult)]
+        public void GameboardIsCreated(int inclusiveLowerMineCellSeedValue, int exclusiveUpperMineCellSeedValue, int integerCount)
         {
             //Arrange
-            
+            MineList mineList = new MineList();
 
             //Act
+            List<int> mines = mineList.CreateUniqueMineList(inclusiveLowerMineCellSeedValue, exclusiveUpperMineCellSeedValue, integerCount);
 
             //Assert
-            //Assert.True(newGameboard != null);
-            //Assert.True(cellHasMine == true);
-            //Assert.True(defaultCells.Count == gridSize);
-            //Assert.True(defaultCells[0].Count == gridSize);
-
-            //Assert.True(string.IsNullOrWhiteSpace(newGame.Description) == false);
+            Assert.True(mines.Count == integerCount);
         }
     }
 }
