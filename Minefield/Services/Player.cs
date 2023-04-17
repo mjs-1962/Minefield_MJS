@@ -16,11 +16,17 @@ namespace Minefield.Services
         public Player(string playerName, int livesForDifficultyLevel)
         {
             PlayerName = playerName;
-            LivesRemaining = livesForDifficultyLevel;
+            TotalLives = livesForDifficultyLevel;
+            LivesRemaining = TotalLives;
         }
 
         public string? PlayerName { get; set; }
+
+        public int TotalLives { get; set; }
+
         public int LivesRemaining { get; set; }
+
+
 
 
         public int CurrentRow { get; set; }
@@ -31,6 +37,8 @@ namespace Minefield.Services
             var rand = new Random();
             CurrentRow = rand.Next(0, 8);
             CurrentColumn = 0;
+            LivesRemaining = TotalLives;
+
         }
 
         public string ChessboardLocation()

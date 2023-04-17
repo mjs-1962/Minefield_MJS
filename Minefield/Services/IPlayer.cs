@@ -5,6 +5,7 @@
         int CurrentColumn { get; set; }
         int CurrentRow { get; set; }
         int LivesRemaining { get; set; }
+        int TotalLives { get; set; }
         string PlayerName { get; set; }
 
         string ChessboardLocation();

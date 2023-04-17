@@ -25,7 +25,8 @@ namespace Minefield.Models
             _player = player;
             _gridSize = gridSize;
             DifficultyLevel = difficultyLevel;
-            _player.LivesRemaining = GetNoOfLivesFromDifficultyLevel();
+            _player.TotalLives = GetNoOfLivesFromDifficultyLevel();
+            _player.LivesRemaining = _player.TotalLives;
         }
 
         public int DifficultyLevel { get; set; }
@@ -36,7 +37,9 @@ namespace Minefield.Models
         //public int CurrentColumn { get; set; }
 
         List<List<bool>> cells { get; set; }
-        
+
+    
+
         public void ResetPlayingField()
         {
             cells = _gameBoard.InitialiseCells(_gridSize);
