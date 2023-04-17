@@ -29,6 +29,13 @@ namespace Minefield.Services
             CurrentColumn = 0;
         }
 
+        public string ChessboardLocation()
+        {
+            var _chessboardColumns = "ABCDEFGH";
+
+            return _chessboardColumns.Substring(CurrentColumn, 1) + (CurrentRow + 1).ToString();
+
+        }
         public bool MoveUp()
         {
             if (CurrentRow < 7)
