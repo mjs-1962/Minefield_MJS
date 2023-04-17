@@ -19,7 +19,7 @@ namespace MinefieldTests
         [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyEasy)]
         [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyMedium)]
         [InlineData(InclusiveLowerMineCellSeedValue, ExclusiveUpperMineCellSeedValue, NoOfMinesForDifficltyDifficult)]
-        public void GameboardIsCreated(int inclusiveLowerMineCellSeedValue, int exclusiveUpperMineCellSeedValue, int integerCount)
+        public void MineListIsCreated(int inclusiveLowerMineCellSeedValue, int exclusiveUpperMineCellSeedValue, int integerCount)
         {
             //Arrange
             MineList mineList = new MineList();
