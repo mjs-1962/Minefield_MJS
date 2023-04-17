@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Minefield.Services
 {
-    public class GameBoard
+    public class GameBoard : IGameBoard
     {
         const bool CellHasMine = true;
         const bool CellHasNoMine = false;

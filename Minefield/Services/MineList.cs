@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Minefield.Services
 {
-    public class MineList
+    public class MineList : IMineList
     {
-        public List<int> CreateUniqueMineList(int lower, int upper, int integerCount)
+        public List<int> CreateUniqueMineList(int inclusiveLowerMineCellSeedValue, int exclusiveUpperMineCellSeedValue, int integerCount)
         {
             List<int> uniqueRandomNumbers = new List<int>();
 
@@ -16,7 +16,7 @@ namespace Minefield.Services
             int newNumber;
             do
             {
-                newNumber = rand.Next(lower, upper);
+                newNumber = rand.Next(inclusiveLowerMineCellSeedValue, exclusiveUpperMineCellSeedValue);
 
                 if (!uniqueRandomNumbers.Contains(newNumber))
                 {

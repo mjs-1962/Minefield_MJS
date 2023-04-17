@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Minefield.Services
 {
-    public class Player
+    public class Player : IPlayer
     {
 
         public Player(string playerName, int livesForDifficultyLevel)
         {
             PlayerName = playerName;
-            LivesRemaining= livesForDifficultyLevel;
+            LivesRemaining = livesForDifficultyLevel;
         }
 
         public string? PlayerName { get; set; }
