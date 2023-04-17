@@ -9,6 +9,10 @@ namespace Minefield.Services
     public class Player : IPlayer
     {
 
+        public Player()
+        {
+        }
+
         public Player(string playerName, int livesForDifficultyLevel)
         {
             PlayerName = playerName;

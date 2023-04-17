@@ -53,5 +53,7 @@ namespace Minefield.Services
             return index % gridSize;
         }
 
+
+        
     }
 }

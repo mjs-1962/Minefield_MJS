@@ -33,7 +33,7 @@ namespace MinefieldTests
             Assert.True(defaultCells.Count == gridSize);
             Assert.True(defaultCells[0].Count == gridSize);
 
-            //Assert.True(string.IsNullOrWhiteSpace(newGame.Description) == false);
+           
         }
     }
 }

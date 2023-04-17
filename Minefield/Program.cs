@@ -10,14 +10,13 @@ internal class Program
     const int ChessboardDimension = 8;
     const string Title = "MINEFIELD";
     const string Description = "Test game for Schneider Electric";
-
     const int DifficutyEasy = 0;
     const int DifficutyMedium = 1;
     const int DifficutyHard = 2;
 
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.Clear();
 
         IHost _host = Host.CreateDefaultBuilder().ConfigureServices(
             services =>
@@ -29,78 +28,37 @@ internal class Program
             })
             .Build();
 
-      
+        Player player = (Player)_host.Services.GetService<IPlayer>();
+        player.PlayerName = "Fred Bloggs";
+        
+
         MinefieldGame ms = new(Title, Description, DifficutyEasy,
                                ChessboardDimension,
                                _host.Services.GetService<IGameBoard>(),
-                               _host.Services.GetService<IMineList>()
-                           );
+                               _host.Services.GetService<IMineList>(),
+                               _host.Services.GetService<IPlayer>());
 
-        Player player = new Player("Mark", DifficutyEasy); //, _host.Services.GetService<IGameBoard>());
+
+        Display display = new Display(ms.Title, ms.Description,
+                                _host.Services.GetService<IGameBoard>(),
+                               _host.Services.GetService<IMineList>(),
+                               _host.Services.GetService<IPlayer>(),
+                               ChessboardDimension);
         ms.ResetPlayingField();
         ms.CreateMineList();
         ms.ApplyMinesToPlayingField();
 
         ConsoleKeyInfo key;
+        
+        display.Draw();
 
         while (true)
         {
             key = Console.ReadKey(true);
 
-            switch (key.Key)
-            {
-                case ConsoleKey.DownArrow:
-                    if (player.MoveDown())
-                    {
-                        Console.WriteLine("Down");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No Down");
-                    }
-                    break;
+            ms.PlayerMove(key);
 
-                case ConsoleKey.UpArrow:
-                    if (player.MoveUp())
-                    {
-                        Console.WriteLine("Up");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No Up");
-                    }
-                    break;
-
-                case ConsoleKey.LeftArrow:
-                    if (player.MoveLeft())
-                    {
-                        Console.WriteLine("Left");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No Left");
-                    }
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    if (player.MoveRight())
-                    {
-                        Console.WriteLine("Right");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No Right");
-                    }
-                    break;
-
-                case ConsoleKey.Multiply:
-                    player.ResetLocation();
-                    Console.Clear();
-                    break;
-
-
-            }
-
+            display.Draw();
         }
 
     }
