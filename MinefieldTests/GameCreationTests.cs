@@ -16,13 +16,10 @@ namespace MinefieldTests
 
             //Act
 
-
             //Assert
             Assert.True(newGame != null);
             Assert.True(string.IsNullOrWhiteSpace(newGame.Title) == false);
             Assert.True(string.IsNullOrWhiteSpace(newGame.Description) == false);
-
-
         }
     }
 }
